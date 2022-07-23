@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  db:
+    # PostgreSQL
+    container_name: postgre
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+    restart: always
+    tty: true
+    stdin_open: true
+    ports:
+      - 5432:8801
+
