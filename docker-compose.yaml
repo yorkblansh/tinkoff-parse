@@ -6,11 +6,14 @@ services:
     container_name: postgre
     build: ./db
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: test
+      POSTGRES_USER: jj
+      POSTGRES_PASSWORD: password
+      POSTGRES_DATABASE: test_db
     restart: always
     tty: true
     stdin_open: true
+    volumes:
+      - postgres:/var/lib/postgresql/data
     ports:
       - 5432:8801
 
