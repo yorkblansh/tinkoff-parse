@@ -17,3 +17,5 @@ services:
     ports:
       - 5432:8801
 
+volumes:
+  postgres:
