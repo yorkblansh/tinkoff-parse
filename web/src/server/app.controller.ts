@@ -7,12 +7,17 @@ export class AppController {
 
 	@Get()
 	@HttpCode(204)
-	getHello(): string {
+	getHello() {
 		return this.appService.getHello()
 	}
 
-	@Get("/static")
-	findOne(): string {
+	@Get("/startParse")
+	startParse(): string {
+		return "staticccc"
+	}
+
+	@Get("/startParse")
+	stopParse(): string {
 		return "staticccc"
 	}
 }
