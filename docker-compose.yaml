@@ -1,44 +1,56 @@
 version: "3.8"
 
 services:
-  db:
-    # PostgreSQL
-    container_name: postgre
-    build: ./db
-    environment:
-      POSTGRES_USER: jj
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: test_db
-    restart: always
-    tty: true
-    stdin_open: true
+  nginx:
+    image: nginx:stable
+    ports:
+      - 127.0.0.1:8080:80
     volumes:
-      - postgres:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-  # nginx:
-  #   container_name: nginx
-  #   build: ./nginx
+      - ./web/public:/usr/share/nginx/html:ro
+    # container_name: nginx
+    # build: ./nginx
+    # ports:
+    #   - 127.0.0.1:8080:80
+    # volumes:
+    #   - ./web/:/www/
+    # extra_hosts:
+    #   - "server:0.0.0.0"
+    # ports:
+    #   - 4000:8080
+  # db:
+  #   # PostgreSQL
+  #   container_name: postgre
+  #   build: ./db
+  #   environment:
+  #     POSTGRES_USER: jj
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: test_db
+  #   restart: always
+  #   tty: true
+  #   stdin_open: true
+  #   volumes:
+  #     - postgres:/var/lib/postgresql/data
+  #   ports:
+  #     - 5432:5432
 
-  web:
-    # NestJS backend
-    container_name: web
-    build: ./web
-    environment:
-      # MYSQL_DATABASE: test
-      # MYSQL_USER: root
-      # MYSQL_PASSWORD: password
-      POSTGRES_USER: jj
-      POSTGRES_PASSWORD: password
-      POSTGRES_DATABASE: test_db
-      POSTGRES_HOST: db
-    ports:
-      - 8080:3000
-    depends_on:
-      - db
-    tty: true
-    stdin_open: true
-    restart: on-failure
-
-volumes:
-  postgres:
+  # web:
+  #   # NestJS backend
+  #   container_name: web
+  #   build: ./web
+  #   environment:
+  #     # MYSQL_DATABASE: test
+  #     # MYSQL_USER: root
+  #     # MYSQL_PASSWORD: password
+  #     POSTGRES_USER: jj
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DATABASE: test_db
+  #     POSTGRES_HOST: db
+  #   ports:
+  #     - 8080:3000
+  #   depends_on:
+  #     - db
+  #   tty: true
+  #   stdin_open: true
+  #   restart: on-failure
+# volumes:
+#   postgres:
