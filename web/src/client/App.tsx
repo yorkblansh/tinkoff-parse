@@ -2,8 +2,30 @@ import * as React from "react"
 import { render } from "react-dom"
 import "./styles.scss"
 import { Typography, TextField, Button } from "@material-ui/core"
+import io from "socket.io-client"
+import { useEffect, useState } from "react"
+import { Events } from "./events.enum"
+
+const socket = io()
 
 export default function App() {
+	const [isConnected, setIsConnected] = useState(socket.connected)
+
+	useEffect(() => {
+		socket.on(Events.CONNECT, () => {
+			setIsConnected(true)
+		})
+
+		socket.on(Events.DISCONNECT, () => {
+			setIsConnected(false)
+		})
+
+		return () => {
+			socket.off(Events.CONNECT)
+			socket.off(Events.DISCONNECT)
+		}
+	}, [])
+
 	return (
 		<div className="App">
 			{/* <AppBar>
@@ -12,7 +34,9 @@ export default function App() {
 				</toolbar>
 			</AppBar> */}
 
-			<Typography variant="h5">BASIC WITH MATERIAL UIiiiiiijojojojojo</Typography>
+			<Typography variant="h5">
+				BASIC WITH MATERIAL UIiiiiiijojojojojo
+			</Typography>
 			<form>
 				<TextField
 					style={{ width: "200px", margin: "5px" }}
