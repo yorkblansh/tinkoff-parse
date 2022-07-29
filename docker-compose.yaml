@@ -1,37 +1,39 @@
 version: "3.8"
 
 services:
-  nginx:
-    image: nginx:stable
-    ports:
-      - 127.0.0.1:8080:80
-    volumes:
-      - ./web/public:/usr/share/nginx/html:ro
-    # container_name: nginx
-    # build: ./nginx
-    # ports:
-    #   - 127.0.0.1:8080:80
-    # volumes:
-    #   - ./web/:/www/
-    # extra_hosts:
-    #   - "server:0.0.0.0"
-    # ports:
-    #   - 4000:8080
-  # db:
-  #   # PostgreSQL
-  #   container_name: postgre
-  #   build: ./db
-  #   environment:
-  #     POSTGRES_USER: jj
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DB: test_db
-  #   restart: always
-  #   tty: true
-  #   stdin_open: true
-  #   volumes:
-  #     - postgres:/var/lib/postgresql/data
+  # nginx:
+  #   image: nginx:stable
   #   ports:
-  #     - 5432:5432
+  #     - 127.0.0.1:8080:80
+  #   volumes:
+  #     - ./web/public:/usr/share/nginx/html:ro
+
+  ########### # container_name: nginx
+  # build: ./nginx
+  # ports:
+  #   - 127.0.0.1:8080:80
+  # volumes:
+  #   - ./web/:/www/
+  # extra_hosts:
+  #   - "server:0.0.0.0"
+  # ports:
+  ########## #   - 4000:8080
+
+  db:
+    # PostgreSQL
+    container_name: postgre
+    build: ./db
+    environment:
+      POSTGRES_USER: jj
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: test_db
+    restart: always
+    tty: true
+    stdin_open: true
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
 
   # web:
   #   # NestJS backend
@@ -52,5 +54,5 @@ services:
   #   tty: true
   #   stdin_open: true
   #   restart: on-failure
-# volumes:
-#   postgres:
+volumes:
+  postgres:
