@@ -10,5 +10,9 @@
     },
     "editor.suggest.insertMode": "replace",
     "gitlens.codeLens.scopes": ["document"]
+  },
+  "[prisma]": {
+    "editor.useTabStops": true,
+    "editor.tabSize": 2
   }
 }
