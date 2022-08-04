@@ -6,3 +6,5 @@ web/.yarn/cache
 web/public
 
 web copy
+.yarn/cache
+package-lock.json
