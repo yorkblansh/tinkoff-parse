@@ -1,12 +1,9 @@
 import {
-	MessageBody,
 	SubscribeMessage,
 	WebSocketGateway,
 	WebSocketServer,
-	WsResponse,
 } from "@nestjs/websockets"
-import { from, Observable } from "rxjs"
-import { map } from "rxjs/operators"
+import { ParserService } from "parser/parser.service"
 import { Server } from "socket.io"
 
 @WebSocketGateway({
@@ -15,6 +12,8 @@ import { Server } from "socket.io"
 	},
 })
 export class EventsGateway {
+	constructor(private readonly parser: ParserService) {}
+
 	@WebSocketServer()
 	server: Server
 
@@ -25,8 +24,12 @@ export class EventsGateway {
 	// 	)
 	// }
 
+	async sendParsedDataToClient() {}
+
 	@SubscribeMessage("parsing")
-	async identity(@MessageBody() data: number): Promise<number> {
-		return data
+	async identity() {
+		this.parser.getData()
+		// const data=
+		// 		return data
 	}
 }
