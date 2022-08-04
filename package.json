@@ -1,0 +1,13 @@
+{
+  "name": "@monorepo/root",
+  "version": "0.1.0",
+  "repository": "",
+  "author": "Oleg Chepelev <yorkblansh@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "reactapp",
+    "nestjs",
+    "common/*"
+  ],
+  "packageManager": "yarn@3.2.2"
+}
