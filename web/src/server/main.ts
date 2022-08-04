@@ -11,11 +11,12 @@ function swagger(app: INestApplication) {
 		.build()
 
 	const document = SwaggerModule.createDocument(app, config)
-	SwaggerModule.setup("api", app, document)
+	SwaggerModule.setup("swagger", app, document)
 }
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule)
+	app.setGlobalPrefix("api")
 
 	swagger(app)
 
