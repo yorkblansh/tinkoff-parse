@@ -4,27 +4,35 @@ import "./styles.scss"
 import { Typography, TextField, Button } from "@material-ui/core"
 import io from "socket.io-client"
 import { useEffect, useState } from "react"
-import { Events } from "./events.enum"
-
-const socket = io()
+import { Events } from "../interfaces/events.enum"
 
 export default function App() {
-	const [isConnected, setIsConnected] = useState(socket.connected)
+	// const socket = io()
 
-	useEffect(() => {
-		socket.on(Events.CONNECT, () => {
-			setIsConnected(true)
-		})
+	// const [list, setList] = useState()
+	// const [isConnected, setIsConnected] = useState(socket.connected)
 
-		socket.on(Events.DISCONNECT, () => {
-			setIsConnected(false)
-		})
+	// useEffect(() => {
+	// 	socket.on(Events.CONNECT, () => {
+	// 		console.log("connected")
+	// 		setIsConnected(true)
+	// 	})
 
-		return () => {
-			socket.off(Events.CONNECT)
-			socket.off(Events.DISCONNECT)
-		}
-	}, [])
+	// 	socket.on(Events.DISCONNECT, () => {
+	// 		console.log("disconnected")
+	// 		setIsConnected(false)
+	// 	})
+
+	// 	socket.on(Events.PARSING, (data) => {
+	// 		console.log(data)
+	// 		setList(data)
+	// 	})
+
+	// 	return () => {
+	// 		socket.off(Events.CONNECT)
+	// 		socket.off(Events.DISCONNECT)
+	// 	}
+	// }, [])
 
 	return (
 		<div className="App">
