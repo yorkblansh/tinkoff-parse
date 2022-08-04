@@ -1,19 +1,60 @@
 # GET /profile
-GET  http://localhost:3000/profile
+GET  http://localhost:3000/api/profile
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFhZG1uIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU5NTQyNTk5LCJleHAiOjE2NTk1NDI2NTl9.9VyhGwPeqzbZsOjSjpgl6XbWw2u8chH9en40ZeQE2mQ
 
 ###
 
-POST http://localhost:3000/auth/login 
+POST http://localhost:3000/api/auth/register 
 content-type: application/json
 
 {
-    "username": "john",
-    "password": "changeme"
+    "username":"uuser",
+    "password":"test_password",
+    "email":"email@email12"
 }
 
 ###
 
-GET http://localhost:3000/profile
+POST http://localhost:3000/api/auth/login 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTY1OTA5ODczNSwiZXhwIjoxNjU5MDk4Nzk1fQ.wR58VDVALJc1pBID8_ck1RenqvqE5bpgL93090Ewywo
+
+# admin
+# {
+#     "username": "john",
+#     "password": "changeme"
+# }
+
+# regular user
+{
+    "username": "uuser",
+    "password": "password"
+}
+
+###
+
+GET http://localhost:3000/api/startParse
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InV1c2VyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1NDI4ODAsImV4cCI6MTY1OTU0Mjk0MH0.Gt9TCvB09jEkuqMDAFB2EENGy2YaqutXY8vfHxu6hoY 
+
+# {
+#     "user":
+#     {
+#     "roles":["user"]
+#     }
+# }
+
+###
+
+GET http://localhost:3000/admin/controls 
+content-type: application/json
+
+
+{
+"roles":"admin"
+}
+
+# {
+#     "username": "john",
+#     "password": "changeme"
+# }
