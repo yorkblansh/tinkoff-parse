@@ -1,11 +1,11 @@
-export interface User {
+export interface UserModel {
 	username: string
 	email: string
 	password: string
-	role: UserRole[]
+	role?: keyof typeof UserRole | undefined
 }
 
-enum UserRole {
+export enum UserRole {
 	user = "user",
 	admin = "admin",
 }
