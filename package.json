@@ -15,5 +15,13 @@
   },
   "devDependencies": {
     "typescript": "^4.7.4"
+  },
+  "dependenciesMeta": {
+    "@prisma/client@4.1.1": {
+      "unplugged": true
+    },
+    "prettier@2.7.1": {
+      "unplugged": true
+    }
   }
 }
