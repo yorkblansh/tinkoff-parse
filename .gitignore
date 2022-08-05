@@ -8,3 +8,5 @@ web/public
 web copy
 .yarn/cache
 package-lock.json
+.pnp.cjs
+.pnp.loader.mjs
