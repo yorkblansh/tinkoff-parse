@@ -14,6 +14,7 @@
     "@mr/common": "workspace:*"
   },
   "devDependencies": {
+    "@yarnpkg/pnpify": "^4.0.0-rc.14",
     "typescript": "^4.7.4"
   },
   "dependenciesMeta": {
@@ -21,6 +22,9 @@
       "unplugged": true
     },
     "prettier@2.7.1": {
+      "unplugged": true
+    },
+    "prisma@4.1.1": {
       "unplugged": true
     }
   }

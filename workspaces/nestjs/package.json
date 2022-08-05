@@ -59,6 +59,7 @@
 		"@types/webpack": "^5.28.0",
 		"@typescript-eslint/eslint-plugin": "^5.31.0",
 		"@typescript-eslint/parser": "^5.31.0",
+		"@yarnpkg/pnpify": "^4.0.0-rc.14",
 		"css-loader": "^6.7.1",
 		"eslint": "^8.20.0",
 		"eslint-config-prettier": "^8.5.0",
