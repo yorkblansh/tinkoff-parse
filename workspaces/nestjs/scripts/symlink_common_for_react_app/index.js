@@ -14,5 +14,5 @@ const INFO = (text) => console.log(blue_color(text))
 const SUCCES = (text) => console.log(green_color(text))
 
 try {
-	symlinkOrCopySync("./src/server/common", "../reactapp/src/common")
+	symlinkOrCopySync("./src/common", "../reactapp/src/common")
 } catch (error) {}
