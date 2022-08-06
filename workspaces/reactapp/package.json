@@ -139,5 +139,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@types/react-dev-utils": "^9.0.11"
   }
 }
