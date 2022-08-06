@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "tinkoff-parser",
   "version": "0.1.0",
   "repository": "",
   "author": "Oleg Chepelev <yorkblansh@gmail.com>",
@@ -10,12 +10,8 @@
     ]
   },
   "packageManager": "yarn@3.2.2",
-  "dependencies": {
-    "@mr/common": "workspace:*"
-  },
   "devDependencies": {
-    "@yarnpkg/pnpify": "^4.0.0-rc.14",
-    "typescript": "^4.7.4"
+    "@yarnpkg/pnpify": "^4.0.0-rc.14"
   },
   "dependenciesMeta": {
     "@prisma/client@4.1.1": {
