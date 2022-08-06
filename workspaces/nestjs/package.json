@@ -18,7 +18,7 @@
 		"test:cov": "jest --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
 		"test:e2e": "jest --config ./test/jest-e2e.json",
-		"symlink_common": "node ./scripts/symlink_react_build/index.js"
+		"symlink_common": "node ./scripts/symlink_common_for_react_app/index.js"
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.12.4",
