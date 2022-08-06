@@ -19,5 +19,5 @@
 		"noFallthroughCasesInSwitch": false,
 		"jsx": "react"
 	},
-	"exclude": ["node_modules", "dist", "test", "client", "prisma","common"]
+	"exclude": ["node_modules", "dist", "test", "client", "prisma"]
 }
