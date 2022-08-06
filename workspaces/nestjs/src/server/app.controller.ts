@@ -12,8 +12,8 @@ import { Roles } from "auth/decorators/roles.decorator"
 import { User } from "auth/decorators/user.decorator"
 import { JwtAuthGuard } from "auth/guards/jwt-auth.guard"
 import { LocalAuthGuard } from "auth/guards/local-auth.guard"
-import { ROUTES } from "@mr/common"
-import { UserModel, UserRole } from "@mr/common"
+import { ROUTES } from "common/interfaces/routes.interface"
+import { UserModel, UserRole } from "common/interfaces/user.interface"
 
 @Controller()
 export class AppController {

@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
+import { UserModel } from "common/interfaces/user.interface"
 import { UserAlreadyExistException } from "exceptions/user-name-is-taken.exception"
 import { UserNotFoundException } from "exceptions/user-not-found.exception"
 import { UsersService } from "users/users.service"
-import { UserModel } from "../../interfaces/user.interface"
 
 @Injectable()
 export class AuthService {

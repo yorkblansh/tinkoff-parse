@@ -1,5 +1,5 @@
 import { BadRequestException, HttpException } from "@nestjs/common"
-import { SpecHttpStatus } from "../../interfaces/local.http.statuses.enum"
+import { SpecHttpStatus } from "common/enums/local.http.statuses.enum"
 
 export class UserAlreadyExistException extends BadRequestException {
 	constructor(private username: string) {
