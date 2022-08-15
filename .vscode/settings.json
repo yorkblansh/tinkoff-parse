@@ -1,5 +1,6 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "web/node_modules/typescript/lib",
+  // "typescript.tsdk": "web/.yarn/sdks/typescript/lib",
   "[typescript]": {
     "editor.tabSize": 2
   },
@@ -9,9 +10,7 @@
       "strings": true
     },
     "editor.suggest.insertMode": "replace",
-    "gitlens.codeLens.scopes": [
-      "document"
-    ]
+    "gitlens.codeLens.scopes": ["document"]
   },
   "[prisma]": {
     "editor.useTabStops": true,
@@ -20,6 +19,6 @@
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true
-  },
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  }
+  // "typescript.enablePromptUseWorkspaceTsdk": true
 }

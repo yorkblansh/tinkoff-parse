@@ -6,7 +6,7 @@ services:
     ports:
       - 127.0.0.1:8080:80
     volumes:
-      - ./web/public:/usr/share/nginx/html:ro
+      - ./web/workspaces/reactapp/build:/usr/share/nginx/html:ro
 
   ########### # container_name: nginx
   # build: ./nginx
@@ -19,21 +19,21 @@ services:
   # ports:
   ########## #   - 4000:8080
 
-  # db:
-  #   # PostgreSQL
-  #   container_name: postgre
-  #   build: ./db
-  #   environment:
-  #     POSTGRES_USER: jj
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DB: test_db
-  #   restart: always
-  #   tty: true
-  #   stdin_open: true
-  #   volumes:
-  #     - postgres:/var/lib/postgresql/data
-  #   ports:
-  #     - 5432:5432
+  db:
+    # PostgreSQL
+    container_name: postgre
+    build: ./db
+    environment:
+      POSTGRES_USER: jj
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: test_db
+    restart: always
+    tty: true
+    stdin_open: true
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
 
   # web:
   #   # NestJS backend

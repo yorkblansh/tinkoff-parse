@@ -1,0 +1,21 @@
+.connect-indicator {
+	&__online {
+		width: 15px;
+		height: 15px;
+		display: flex;
+		background-color: aquamarine;
+		border-style: solid;
+		border-radius: 55px;
+		border-color: aqua;
+	}
+
+	&__offline {
+		width: 15px;
+		height: 15px;
+		display: flex;
+		background-color: rgb(172, 127, 255);
+		border-style: solid;
+		border-radius: 55px;
+		border-color: rgb(255, 0, 64);
+	}
+}
