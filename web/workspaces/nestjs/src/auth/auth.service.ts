@@ -36,6 +36,8 @@ export class AuthService {
 	}
 
 	async loginUser(user: any) {
+		const dbUser = await this.usersService.findOne(user.username)
+
 		const payload = {
 			username: user.username,
 			sub: user.userId,
@@ -44,6 +46,7 @@ export class AuthService {
 
 		return {
 			access_token: this.jwtService.sign(payload),
+			role: dbUser.role,
 		}
 	}
 
@@ -63,6 +66,7 @@ export class AuthService {
 				role: "user",
 			}
 			this.usersService.create(potentialUser)
+			return { status: "ok" }
 		}
 	}
 }
