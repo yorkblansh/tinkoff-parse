@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common"
 import { PassportStrategy } from "@nestjs/passport"
+import { AuthService } from "auth/auth.service"
 import { UserModel } from "common/interfaces/user.interface"
 import { ExtractJwt, Strategy } from "passport-jwt"
 import { jwtConstants } from "../constants"
@@ -15,7 +16,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 	}
 
 	async validate(payload: any) {
+		// const user = await this.authService.validateUserRole(payload.username)
 		// console.log(payload)
+		if (payload) console.log("payload is exist")
+		console.log(payload)
 		return {
 			username: payload.username,
 			email: payload.email,
