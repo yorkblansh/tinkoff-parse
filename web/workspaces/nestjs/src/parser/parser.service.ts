@@ -1,5 +1,9 @@
 import { HttpService } from "@nestjs/axios"
 import { Injectable } from "@nestjs/common"
+import * as cheerio from "cheerio"
+import * as _ from "lodash"
+import { Either, right, left } from "@sweet-monads/either"
+import { ParsedData, ParserError } from "common/types/parser.types"
 
 @Injectable()
 export class ParserService {
@@ -8,11 +12,28 @@ export class ParserService {
 
 	constructor(private readonly httpService: HttpService) {}
 
-	async getData() {
-		const response = await this.httpService.axiosRef.request({
-			baseURL: this.urlForParse,
-		})
+	async getData(): Promise<Either<ParserError, ParsedData>> {
+		return this.httpService.axiosRef
+			.request({
+				baseURL: this.urlForParse,
+			})
+			.then((response) => {
+				let arr: string[] = []
+				const $ = cheerio.load(response.data)
 
-		// console.log(response)
+				function fullArray(i: number) {
+					arr[i] = $(this).text()
+				}
+
+				$(".sell_table tbody tr td").each(fullArray)
+
+				// arr.join(", ")
+
+				const splittedArray = _.chunk(arr, 5)
+				return right(splittedArray)
+			})
+			.catch(() => {
+				return left({ error: "" })
+			})
 	}
 }
