@@ -1,20 +1,21 @@
-import { UseGuards } from "@nestjs/common"
+import { Inject, UseGuards } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
 import {
 	ConnectedSocket,
-	MessageBody,
 	SubscribeMessage,
 	WebSocketGateway,
 	WebSocketServer,
 } from "@nestjs/websockets"
-import { Roles } from "auth/decorators/roles.decorator"
-import { JwtAuthGuard } from "auth/guards/jwt-auth.guard"
 import { wsAuthGuard } from "auth/guards/ws-auth.guard"
-import { Events } from "common/enums/events.enum"
-import { UserRole } from "common/interfaces/user.interface"
+import { ParsedData, ParserError } from "common/types/parser.types"
 import { ParserService } from "parser/parser.service"
+import {
+	RedisClientType,
+	RedisFunctions,
+	RedisModules,
+	RedisScripts,
+} from "redis"
 import { Server } from "socket.io"
-import { Socket } from "socket.io-client"
 
 @WebSocketGateway({
 	cors: {
@@ -22,6 +23,7 @@ import { Socket } from "socket.io-client"
 		// maxAge: 5000,
 		// preflightContinue: false,
 	},
+
 	// connectTimeout: 10000,
 	// destroyUpgradeTimeout: 12000,
 	// pingTimeout: 2000,
@@ -30,38 +32,46 @@ import { Socket } from "socket.io-client"
 export class EventsGateway {
 	constructor(
 		private readonly parser: ParserService,
-		private readonly jwtService: JwtService
-	) {}
+		private readonly jwtService: JwtService,
+		@Inject("REDIS_CLIENT") private readonly redis: RedisClientType
+	) {
+		this.emitParsed()
+	}
 
 	@WebSocketServer()
 	server: Server
 
-	// @SubscribeMessage("events")
-	// findAll(@MessageBody() data: any): Observable<WsResponse<number>> {
-	// 	return from([1, 2, 3]).pipe(
-	// 		map((item) => ({ event: "events", data: item }))
-	// 	)
-	// }
-	// async sendParsedDataToClient() {}
+	async emitParsed() {
+		const either = await this.parser.getData()
+
+		const handleParserError = (parserError: ParserError) => {
+			console.log(parserError.error)
+		}
+
+		const handleSendingToClient = async (parsedData: ParsedData) => {
+			const parsing_state = (await this.redis.get("parsing_state")) as "0" | "1"
+
+			if (parsing_state === "1") {
+				this.server.to("parsing_room").emit("parse", {
+					parsedData,
+					...{ timstamp: new Date().getMilliseconds() },
+				})
+			}
+
+			this.server.to("parsing_room").emit("parse_state", {
+				state: parsing_state,
+			})
+		}
+
+		setInterval(() => {
+			either.mapRight(handleSendingToClient).mapLeft(handleParserError)
+		}, 500)
+	}
 
 	@UseGuards(wsAuthGuard)
 	@SubscribeMessage("login")
-	async login(@MessageBody() data: any) {
-		// console.log(data)
-		// this.jwtService.decode()
-	}
-
-	@SubscribeMessage("parsing")
-	async identity(@MessageBody() data: {}, @ConnectedSocket() client: Socket) {
-		const timeStamp = new Date().getSeconds().toString()
-		console.log([data, timeStamp])
-		const returnData = { ...data, fromServer: "yes", timeStamp }
-		// client.emit(Events.PARSING, returnData)
-		// setInterval(function () {
-		// 	client.emit(Events.PARSING, returnData)
-		// }, 2000)
-		// this.parser.getData()
-		// const data=
-		// 		return data
+	async login() {
+		this.server.socketsLeave("parsing_room")
+		this.server.socketsJoin("parsing_room")
 	}
 }
