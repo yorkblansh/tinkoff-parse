@@ -19,10 +19,10 @@ services:
   # ports:
   ########## #   - 4000:8080
 
-  db:
+  db-postgre:
     # PostgreSQL
     container_name: postgre
-    build: ./db
+    build: ./db/sql/postgres
     environment:
       POSTGRES_USER: jj
       POSTGRES_PASSWORD: password
@@ -34,6 +34,14 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  db-redis:
+    container_name: redis
+    build: ./db/redis
+    volumes:
+      - redis:/data redis/redis-stack-server:latest
+    ports:
+      - 6379:6379
 
   # web:
   #   # NestJS backend
@@ -56,3 +64,4 @@ services:
   #   restart: on-failure
 volumes:
   postgres:
+  redis:

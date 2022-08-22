@@ -1,15 +1,22 @@
-main {
+.main {
 	background-color: transparent;
-	// height: 80%;
-    width: 100%;
+	width: 95%;
+	margin: 40px;
 	display: flex;
 	flex-direction: column;
-	// min-height: 100vh;
 	display: flex;
 	color: black;
-	// flex-direction: column;
-	// align-items: center;
-	// justify-content: center;
-	font-size: calc(10px + 2vmin);
-	// color: white;
+	font-size: calc(2px + 2vmin);
+
+	&__parsing-stopped {
+		display: flex;
+		flex-direction: column;
+		background-color: #f3db32;
+		border-radius: 5px;
+		padding: 2px;
+		margin-top: 5px;
+		border-color: red;
+		border-width: 2px;
+		border-style: solid;
+	}
 }

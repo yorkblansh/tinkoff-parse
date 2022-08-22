@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 // import { ROUTES } from "./common/interfaces/routes.interface"
 import { LoginPage } from "./pages/auth/login/Login.page"
+import { RegisterPage } from "./pages/auth/register/Register.page"
 
 export enum ROUTES {
 	Auth = "auth",
@@ -16,17 +17,17 @@ export enum ROUTES {
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<App />} />
-				<Route path={ROUTES.Auth}>
-					<Route path={ROUTES.Login} element={<LoginPage />} />
-					<Route path={ROUTES.Register} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
-	</React.StrictMode>
+	// <React.StrictMode>
+	<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<App />} />
+			<Route path={ROUTES.Auth}>
+				<Route path={ROUTES.Login} element={<LoginPage />} />
+				<Route path={ROUTES.Register} element={<RegisterPage />} />
+			</Route>
+		</Routes>
+	</BrowserRouter>
+	// </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function

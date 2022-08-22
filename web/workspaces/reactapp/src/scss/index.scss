@@ -11,3 +11,38 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	border: 3px solid #a1aec9;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 4px;
+}
+
+thead th:nth-child(1) {
+	width: 15%;
+	background-color: #00dcff;
+}
+
+thead th:nth-child(2) {
+	width: 45%;
+	background-color: #00dcff;
+}
+
+thead th:nth-child(3) {
+	width: 25%;
+	background-color: #00dcff;
+}
+
+thead th:nth-child(4) {
+	width: 15%;
+	background-color: #00dcff;
+}
+
+th,
+td {
+	padding: 5px;
+}

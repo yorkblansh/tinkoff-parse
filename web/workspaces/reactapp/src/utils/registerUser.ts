@@ -1,19 +1,19 @@
-import { Either, right, left } from "@sweet-monads/either"
+import { Either, left, right } from "@sweet-monads/either"
 import { httpFetch, NetWorkError } from "../services/httpFetch"
 
-export interface UserNotFoundError {
+export interface UserAlreadyExistException {
 	error: string
 }
 
-export interface AccessToken {
-	access_token: string
-	role: "admin" | "user"
-}
+type RegisterResponse = { status: string }
 
-export async function loginUser(
-	queryData: any
-): Promise<Either<Either<NetWorkError, UserNotFoundError>, AccessToken>> {
-	const userLoginUrl = "http://localhost:3001/api/auth/login"
+export async function registerUser(queryData: {
+	username: string
+	password: string
+}): Promise<
+	Either<Either<NetWorkError, UserAlreadyExistException>, RegisterResponse>
+> {
+	const userLoginUrl = "http://localhost:3001/api/auth/register"
 	const response = await httpFetch({
 		method: "post",
 		route: userLoginUrl,
@@ -25,7 +25,7 @@ export async function loginUser(
 			const clientResponse = networkError.error_response
 			const clientErrorStatus = clientResponse.data.statusCode
 			const userErrorMessage = clientResponse.data.error
-			if (clientErrorStatus === 419) return right({ error: userErrorMessage })
+			if (clientErrorStatus === 420) return right({ error: userErrorMessage })
 			else {
 				return right({ error: "some error with user" })
 			}

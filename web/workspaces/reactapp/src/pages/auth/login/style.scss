@@ -8,6 +8,25 @@
 	align-content: center;
 	align-items: center;
 
+	&__back-button-wrapper {
+		display: flex;
+		width: 100%;
+		justify-content: end;
+		flex-direction: row;
+
+		&__item {
+			display: flex;
+			background-color: #11b7b7;
+			border-color: rgb(0 167 167);
+			border-style: solid;
+			border-width: 3px;
+			border-radius: 5px 5px 0px 0px;
+			font-size: 16px;
+			margin-right: 5px;
+			color: black;
+		}
+	}
+
 	&__form {
 		width: fit-content;
 		height: -moz-fit-content;
