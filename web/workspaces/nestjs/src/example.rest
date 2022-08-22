@@ -9,9 +9,9 @@ POST http://localhost:3001/api/auth/register
 content-type: application/json
 
 {
-    "username":"uuser",
+    "username":"uuserr",
     "password":"test_password",
-    "email":"email@email12"
+    "email":"email@email122"
 }
 
 ###
@@ -21,8 +21,8 @@ content-type: application/json
 
 # admin
 # {
-#     "username": "john",
-#     "password": "changeme"
+#     "username": "admin",
+#     "password": "password"
 # }
 
 # regular user
@@ -35,7 +35,7 @@ content-type: application/json
 
 GET http://localhost:3001/api/startParse
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InV1c2VyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1NDI4ODAsImV4cCI6MTY1OTU0Mjk0MH0.Gt9TCvB09jEkuqMDAFB2EENGy2YaqutXY8vfHxu6hoY 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InV1c2VyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NjExOTE3MDMsImV4cCI6MTY2MTE5MjIwM30.QAnmNVvsKapQMkPjfwgZT1T5ypPxqW2Uv_KsYu2zDsY
 
 # {
 #     "user":
