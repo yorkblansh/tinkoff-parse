@@ -4,6 +4,15 @@
 	"repository": "",
 	"author": "Oleg Chepelev <yorkblansh@gmail.com>",
 	"license": "MIT",
+	"scripts": {
+		"nest:generate-prisma": "yarn workspace nestjs run prisma generate",
+		"nest:start:dev": "yarn workspace nestjs run start:dev",
+		"nest:start:prod": "yarn workspace nestjs run start:prod",
+		"nest:symlink_common": "yarn workspace nestjs run symlink_common",
+		"nest:build": "yarn workspace nestjs run build",
+		"react:start": "yarn workspace reactapp run start",
+		"react:build": "yarn workspace reactapp run build"
+	},
 	"workspaces": {
 		"packages": [
 			"workspaces/*"
