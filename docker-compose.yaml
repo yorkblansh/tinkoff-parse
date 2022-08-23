@@ -19,7 +19,7 @@ services:
     # # ports:
     # #   - 4000:8080
 
-  db-postgres:
+  postgres:
     # PostgreSQL
     container_name: postgre
     build: ./db/sql/postgres
@@ -35,13 +35,15 @@ services:
     ports:
       - 5432:5432
 
-  db-redis:
+  redis:
     container_name: redis
     build: ./db/redis
     volumes:
       - redis:/data redis/redis-stack-server:latest
     ports:
       - 6379:6379
+    # networks:
+    #   - webnet
 
   web:
     # NestJS backend
@@ -55,15 +57,22 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DATABASE: test_db
       POSTGRES_HOST: db
+      REDIS_URL: redis://cache
     ports:
       - 8081:3000
     depends_on:
-      - db-postgres
-      - db-redis
+      - postgres
+      # - redis
     tty: true
     stdin_open: true
     restart: on-failure
+    links:
+      - redis
+    # networks:
+    #   - webnet
 
 volumes:
   postgres:
   redis:
+# networks:
+#   webnet:
