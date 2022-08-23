@@ -39,7 +39,7 @@ services:
     container_name: redis-db
     build: ./db/redis
     volumes:
-      - redis:/data redis/redis-stack-server:latest
+      - redis:/data
     # ports:
     #   - 6379:6379
     # networks:
