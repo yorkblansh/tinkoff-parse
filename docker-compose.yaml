@@ -57,7 +57,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DATABASE: test_db
       POSTGRES_HOST: db
-      REDIS_URL: redis://cache
+      REDIS_URL: redis://redis-db
     ports:
       - 3001:3001
     depends_on:
