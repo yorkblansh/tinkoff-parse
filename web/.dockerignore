@@ -1,0 +1,7 @@
+/.vscode
+# /.yarn
+/node_modules
+LICENSE
+*lock.json
+*.lock
+*.txt
