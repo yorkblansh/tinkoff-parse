@@ -8,16 +8,16 @@ services:
     volumes:
       - ./web/workspaces/reactapp/build:/usr/share/nginx/html:ro
 
-  ########### # container_name: nginx
-  # build: ./nginx
-  # ports:
-  #   - 127.0.0.1:8080:80
-  # volumes:
-  #   - ./web/:/www/
-  # extra_hosts:
-  #   - "server:0.0.0.0"
-  # ports:
-  ########## #   - 4000:8080
+    # container_name: nginx
+    # build: ./nginx
+    # ports:
+    #   - 127.0.0.1:8080:80
+    # volumes:
+    #   - ./web/workspaces/reactapp/build:/www/
+    # extra_hosts:
+    #   - "server:0.0.0.0"
+    # # ports:
+    # #   - 4000:8080
 
   db-postgre:
     # PostgreSQL
@@ -43,25 +43,26 @@ services:
     ports:
       - 6379:6379
 
-  # web:
-  #   # NestJS backend
-  #   container_name: web
-  #   build: ./web
-  #   environment:
-  #     # MYSQL_DATABASE: test
-  #     # MYSQL_USER: root
-  #     # MYSQL_PASSWORD: password
-  #     POSTGRES_USER: jj
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DATABASE: test_db
-  #     POSTGRES_HOST: db
-  #   ports:
-  #     - 8080:3000
-  #   depends_on:
-  #     - db
-  #   tty: true
-  #   stdin_open: true
-  #   restart: on-failure
+  web:
+    # NestJS backend
+    container_name: web
+    build: ./web
+    environment:
+      # MYSQL_DATABASE: test
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: password
+      POSTGRES_USER: jj
+      POSTGRES_PASSWORD: password
+      POSTGRES_DATABASE: test_db
+      POSTGRES_HOST: db
+    ports:
+      - 8080:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+    restart: on-failure
+
 volumes:
   postgres:
   redis:
