@@ -21,7 +21,7 @@ services:
 
   postgres:
     # PostgreSQL
-    container_name: postgre
+    container_name: postgres-db
     build: ./db/sql/postgres
     environment:
       POSTGRES_USER: jj
@@ -36,7 +36,7 @@ services:
       - 5432:5432
 
   redis:
-    container_name: cache
+    container_name: redis-db
     build: ./db/redis
     volumes:
       - redis:/data redis/redis-stack-server:latest
