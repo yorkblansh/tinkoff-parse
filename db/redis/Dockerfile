@@ -1,3 +1,3 @@
-FROM redis/redis-stack-server:latest
+FROM redis:latest
 
 EXPOSE 6379
