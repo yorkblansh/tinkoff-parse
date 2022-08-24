@@ -3,6 +3,6 @@
 /node_modules
 /workspaces/reactapp
 LICENSE
-*lock.json
-*.lock
+# *lock.json
+# *.lock
 *.txt
