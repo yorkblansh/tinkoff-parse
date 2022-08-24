@@ -1,7 +1,7 @@
 /.vscode
 # /.yarn
 /node_modules
-/workspaces/reactapp
+# /workspaces/reactapp
 LICENSE
 # *lock.json
 # *.lock
