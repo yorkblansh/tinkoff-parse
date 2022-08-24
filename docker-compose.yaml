@@ -23,7 +23,7 @@ services:
     depends_on:
       - postgresql
     ports:
-      - 8081:80
+      - 8082:80
     image: dpage/pgadmin4
     links:
       - postgresql
