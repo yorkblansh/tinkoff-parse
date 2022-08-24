@@ -5,7 +5,8 @@
 	"author": "Oleg Chepelev <yorkblansh@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"nest:generate-prisma": "yarn workspace nestjs run prisma generate",
+		"nest:prisma:generate": "yarn workspace nestjs run prisma generate",
+		"nest:prisma:migrate": "yarn workspace nestjs run prisma migrate dev --name 'init'",
 		"nest:start:dev": "yarn workspace nestjs run start:dev",
 		"nest:start:prod": "yarn workspace nestjs run start:prod",
 		"nest:symlink_common": "yarn workspace nestjs run symlink_common",
