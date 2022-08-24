@@ -17,9 +17,10 @@ COPY . .
 # RUN npm i -g yarn
 RUN yarn set version stable 
 RUN yarn install
-RUN yarn run nest:generate-prisma
+RUN yarn run nest:prisma:generate
 RUN yarn run nest:symlink_common
 RUN yarn run nest:build
+# RUN yarn run nest:prisma:migrate
 # RUN yarn add @prisma/client
 # RUN yarn run prisma generate
 # RUN yarn run build
