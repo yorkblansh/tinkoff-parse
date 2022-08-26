@@ -2,9 +2,14 @@ version: "3.8"
 
 services:
   nginx:
+    # container_name: nginx
+    # build: ./nginx
     image: nginx:stable
     ports:
       - 127.0.0.1:8085:80
+    depends_on:
+      - web
+    # command: cp ../web/workspaces/reactapp/build /usr/share/nginx/html
     volumes:
       - ./web/workspaces/reactapp/build:/usr/share/nginx/html
 
@@ -87,7 +92,7 @@ services:
       PGHOST: postgresql
       REDIS_URL: redis://redis-db
     ports:
-      - 3000:3001
+      - 3001:3001
     depends_on:
       - postgresql
       - redis
