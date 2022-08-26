@@ -2,8 +2,6 @@
 
 nestjs postgresql socket.io docker
 
-
-
 ```sql
 -- CreateTable
 CREATE TABLE "User" (
