@@ -1,15 +1,15 @@
-FROM alpine:latest
+# FROM alpine:latest
 
-RUN apk add --update nginx && rm -rf /var/cache/apk/*
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./vhost.conf /etc/nginx/conf.d/vhost.conf
+# RUN apk add --update nginx && rm -rf /var/cache/apk/*
 
-# forward request and error logs to docker log collector
-RUN ln -svf /dev/stdout /var/log/nginx/access.log \
-    && ln -svf /dev/stderr /var/log/nginx/error.log
+FROM nginx:stable
 
-# RUN ip -4 route list match 0/0 | awk '{print $3 "host.docker.internal"}' >> /etc/hosts
+# WORKDIR /build
 
-EXPOSE 8080 80
+COPY ./t/nginx.conf /etc/nginx/nginx.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY ./build ./usr/share/nginx/html
+
+# EXPOSE 8080 80
+
+# CMD ["nginx", "-g", "daemon off;"]
