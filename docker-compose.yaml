@@ -6,7 +6,7 @@ services:
     ports:
       - 127.0.0.1:8085:80
     volumes:
-      - ./web/workspaces/reactapp/build:/usr/share/nginx/html:ro
+      - ./web/workspaces/reactapp/build:/usr/share/nginx/html
 
   # phpmyadmin:
   #   container_name: phpmyadmin
